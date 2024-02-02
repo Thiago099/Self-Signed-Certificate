@@ -4,6 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 
 string domain = "localhost";
 string certificateName = "Test self signed certificate";
+string fileName = "testSelfSigned";
 string password = "P@55w0rd";
 int expiresInYears = 5;
 
@@ -36,7 +37,7 @@ store.Open(OpenFlags.ReadWrite);
 store.Add(cert);
 store.Close();
 
-File.WriteAllBytes("./mycert.pfx", cert.Export(X509ContentType.Pfx, password));
+File.WriteAllBytes($"./{fileName}.pfx", cert.Export(X509ContentType.Pfx, password));
 
 // THE FOLLOWING COMENTED CODE IS NOT TESTED BUT IT SHOULD WORK
 //// Create Base 64 encoded CER (public key only)
